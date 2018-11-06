@@ -21,7 +21,7 @@ public class ArrayMethods{
       }
       int sum = 0;
       for (int i = 0; i < ary.length; i ++) {
-        if (x < ary[x].length) {
+        if (x < ary[i].length) {
           sum += ary[i][x];
         }
       }

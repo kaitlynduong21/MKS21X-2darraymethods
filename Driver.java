@@ -31,6 +31,13 @@ public class Driver {
       {2,4,6,5},
       {10,9,8},
     };
+    int[][] tester3 = new int[][]{
+      {7,6,5,10},
+      {8,7,6,5},
+      {3,4,5,10,30},
+      {2,4,6,5},
+      {10,9,8},
+    };
     System.out.println();
     System.out.println(" ---------------------------------");
     System.out.println("|                                 |");
@@ -90,6 +97,8 @@ public class Driver {
     printArray1(ArrayMethods.allColSums(tester1));
     System.out.println("\nArrayMethods.allColSums(tester2) should return {30,30,30,30,30}");
     printArray1(ArrayMethods.allColSums(tester2));
+    System.out.println("\nArrayMethods.allColSums(tester3) should return {30,30,30,30,30}");
+    printArray1(ArrayMethods.allColSums(tester3));
     System.out.println();
     System.out.println();
     System.out.println(); /*
