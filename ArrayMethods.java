@@ -12,8 +12,18 @@ public class ArrayMethods{
       return sum;
     }
 
+    public static int findBig(int[][] ary) {
+      int big = 0;
+      for (int x = 0; x < ary.length; x ++) {
+        if (ary[x].length >= big) {
+          big = ary[x].length;
+        }
+      }
+      return big;
+    }
+
     public static int columnSum(int[][] ary, int x){
-      if (x >= ary.length) {
+      if (x >= findBig(ary)) {
         return 0;
       }
       int sum = 0;
@@ -37,14 +47,8 @@ public class ArrayMethods{
 
 
      public static int[] allColSums(int[][] ary){
-       int big = 0;
-       for (int x = 0; x < ary.length; x ++) {
-         if (ary[x].length >= big) {
-           big = ary[x].length;
-         }
-       }
-       int[] arraySum = new int [big];
-       for (int i = 0; i < big; i ++) {
+       int[] arraySum = new int [findBig(ary)];
+       for (int i = 0; i < findBig(ary); i ++) {
          arraySum[i] = columnSum(ary, i);
        }
        return arraySum;
@@ -66,18 +70,12 @@ public class ArrayMethods{
 
     public static boolean isColumnMagic(int[][] ary){
       int count = 0;
-      int big = 0;
-      for (int x = 0; x < ary.length; x ++) {
-        if (ary[x].length >= big) {
-          big = ary[x].length;
-        }
-      }
-      for (int i = 0; i < big; i ++) {
+      for (int i = 0; i <= findBig(ary); i ++) {
         if (columnSum(ary, i) == columnSum(ary, i + 1)) {
           count++;
         }
       }
-      return count == ary.length -1;
+      return count == findBig(ary);
     }
      //checks if the array is column-magic (this means that every column has the same column sum).
 
