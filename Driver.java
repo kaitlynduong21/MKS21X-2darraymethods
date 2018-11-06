@@ -101,7 +101,7 @@ public class Driver {
     printArray1(ArrayMethods.allColSums(tester3));
     System.out.println();
     System.out.println();
-    System.out.println(); /*
+    System.out.println();
     System.out.println("TESTING isRowMagic");
     System.out.println();
     System.out.println("ArrayMethods.isRowMagic(tester1) should return true");
@@ -122,6 +122,6 @@ public class Driver {
     System.out.println("|                                 |");
     System.out.println("|             FINISH              |");
     System.out.println("|                                 |");
-    System.out.println(" ---------------------------------");*/
+    System.out.println(" ---------------------------------");
   }
 }
