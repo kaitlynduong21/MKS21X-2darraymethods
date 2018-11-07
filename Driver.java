@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Driver {
   public static String printArray(int[] ary){
     if (ary.length == 0){
@@ -390,6 +392,98 @@ public class Driver {
       //Should not happen!
       System.out.println("You're throwing an IndexOutOfBoundsException when running isColumnMagic");
       e.printStackTrace();
+    }
+
+    //TEJAS Driver
+
+    System.out.println("\nTejas's Driver \n");
+
+    int count = 0;
+    int[][] square = new int[7][];
+    for (int i = 0; i < 7; i++) {
+      square[i] = new int[i+3];
+      for (int j = 0; j < i+3; j++) {
+        square[i][j] = j + 1;
+      }
+    }
+
+
+    int[] rowSums = new int[7];
+    for (int i = 0; i < 7; i++) {
+      rowSums[i] = (i + 3) * (i + 4) / 2;
+    }
+    int[] colSums = new int[9];
+    for (int i = 0; i < 9; i++) {
+      if (i < 3) {
+        colSums[i] = 7 * (i + 1);
+      } else {
+        colSums[i] = (9 - i) * (i + 1);
+      }
+    }
+
+
+    System.out.println("\nInitialized a 2D array, filled arrays with correct sum values\n");
+    System.out.println(".............................................................\n");
+
+    //PART 1
+    try {
+      for (int i = 0; i < 7; i++) {
+        if (ArrayMethods.rowSum(square, i) != rowSums[i]) {
+          System.out.println(++count + ") rowSum returns " + ArrayMethods.rowSum(square, i) + " at " + i + " instead of " + rowSums[i] + "!");
+        }
+      }
+    } catch (IndexOutOfBoundsException e) {
+      System.out.println(++count + ") rowSum should not throw an exception!");
+    }
+
+    try {
+      for (int i = 0; i < 9; i++) {
+        if (ArrayMethods.columnSum(square, i) != colSums[i]) {
+          System.out.println(++count + ") columnSum returns " + ArrayMethods.columnSum(square, i) + " at " + i + " instead of " + colSums[i] + "!");
+        }
+      }
+    } catch (IndexOutOfBoundsException e) {
+      System.out.println(++count + ") columnSum should not throw an exception!");
+    }
+
+    //PART 2
+    try {
+      if (!Arrays.equals(ArrayMethods.allRowSums(square), rowSums)) {
+        System.out.println(++count + ") allRowSums returns an incorrect set of values!");
+      }
+    } catch (IndexOutOfBoundsException e) {
+      System.out.println(++count + ") allRowSums should not throw an exception!");
+    }
+
+    try {
+      if (!Arrays.equals(ArrayMethods.allColSums(square), colSums)) {
+        System.out.println(++count + ") allColSums returns an incorrect set of values!");
+      }
+    } catch (IndexOutOfBoundsException e) {
+      System.out.println(++count + ") allColSums should not throw an exception!");
+    }
+
+    //PART 3
+    try {
+      if (ArrayMethods.isRowMagic(square)) {
+        System.out.println(++count + ") isRowMagic should return false!");
+      }
+    } catch (IndexOutOfBoundsException e) {
+      System.out.println(++count + ") isRowMagic should not throw an exception!");
+    }
+
+    try {
+      if (ArrayMethods.isColumnMagic(square)) {
+        System.out.println(++count + ") isColumnMagic should return false!");
+      }
+    } catch (IndexOutOfBoundsException e) {
+      System.out.println(++count + ") isColumnMagic should not throw an exception!");
+    }
+
+    if (count > 0) {
+      System.out.println("\nYour code had " + count + " mistakes. Keep trying!\n");
+    } else {
+      System.out.println("\nYour code had no mistakes. You're good to go!\n");
     }
   }
 }
